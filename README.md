@@ -8,7 +8,8 @@
 - **docker container run --name *container-name* -it --rm *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo (entra dentro do container) a partir da imagem *image*, porém o apaga assim que finalizá-lo;
 - **docker container create *image*** -> cria um container a partir da imagem *image*;
 - **docker container create --name *container-name* -p *output-port*:*container-port* *image*** -> cria um container de nome *container-name* mapeando as portas expostas ao mundo exterior *output-port* e a porta do container *container-port*. *output-port* é a porta acessível no browser;
-- **docker container start *container-name*** -> inicia um container de nome *container-name* criado e parado; 
+- **docker container start *container-name*** -> inicia um container de nome *container-name* criado e parado;
+- **docker container start -ia *container-name*** -> inicia um container de nome *container-name* no modo interativo; 
 - **docker container exec -it *container-name* *command*** -> executa o comando *command* de um container de nome *container-name* em execução. Um exemplo de comando é o bash e é dado por /bin/sh;
 - **docker container stop** -> para um container em execução de nome *container-name*;
 - **docker container stats *container-name*** -> exibe as estatísticas relativas ao uso de CPU, de memória, de I/O etc, de um container de nome *container-name*;
@@ -18,7 +19,17 @@
 - **docker container prune** -> remove todos os containers parados;
 
 ## Imagens
+- **docker image pull** -> baixa uma imagem do dockerhub;
 - **docker image ls** ou **docker images** -> exibe todas as imagens disponíveis na máquina local;
+- **docker images -q** -> exibe apenas os ids das imagens;
+- **docker image rm *image*** -> apaga a imagem de nome *image*;
+- **docker image inspect *image*** -> inspeciona a image *image*;
+- **docker images prune -a** -> apaga todas as imagens;
+- **docker image build -t *source-image* .** -> cria uma imagem a partir de um arquivo Dockerfile;
+- **docker built -t appnetcore:dev -f *Dockerfile-name* .** -> cria uma imagem a partir de um arquivo Dockerfile de nome *Dockerfile-name*;
+- **docker image tag *source-image* *dest-image*** -> Tagueia a imagem. Deve ser feito antes de enviar ao dockerhub;
+- **docker login** -> Efetua o login no dockerhub;
+- **docker image push *image*** -> envia a imagem *image* ao docker hub;
 
 ## Volumes
 
