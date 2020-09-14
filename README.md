@@ -8,6 +8,7 @@
 - **docker container run --name *container-name* -it --rm *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo (entra dentro do container) a partir da imagem *image*, porém o apaga assim que finalizá-lo;
 - **docker container create *image*** -> cria um container a partir da imagem *image*;
 - **docker container create --name *container-name* -p *output-port*:*container-port* *image*** -> cria um container de nome *container-name* mapeando as portas expostas ao mundo exterior *output-port* e a porta do container *container-port*. *output-port* é a porta acessível no browser;
+- **docker container create -it *image* *command*** -> cria um container para ser executado no modo interativo. Use esse comando para criar um container linux, por exemplo.
 - **docker container start *container-name*** -> inicia um container de nome *container-name* criado e parado;
 - **docker container start -ia *container-name*** -> inicia um container de nome *container-name* no modo interativo; 
 - **docker container exec -it *container-name* *command*** -> executa o comando *command* de um container de nome *container-name* em execução. Um exemplo de comando é o bash e é dado por /bin/sh;
@@ -32,6 +33,11 @@
 - **docker image push *image*** -> envia a imagem *image* ao docker hub;
 
 ## Volumes
+- **docker container run --name *container-name* -d --rm -v *host-folder*:*container-folder* -p *external-port*:*internal-port* *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo segundo plano a partir da imagem *image*, apagando-o assim que finalizá-lo. Mapeia as portas externa e interna do container. Mapeia um volume na pasta *container-folder* que pode ser acessado no host na pasta *host-folder*;
+- **docker volume create --name *volume-name*** -> cria um volume de nome *volume-name*;
+- **docker container run --name *container-name* -d --rm -v *volume-name*:*container-volume-folder* -p *external-port*:*internal-port* *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo segundo plano a partir da imagem *image*, apagando-o assim que finalizá-lo. Mapeia as portas externa e interna do container. Mapeia um volume na pasta *container-volume-folder* que pode ser acessado no host através do volume criado;
+- **docker container create --name *container-name* -v /*container-folder* *image*** -> cria um container *container-name* e cria uma pasta no container chamada *container-folder*. Essa pasta pode ser compatilhada entre vários containeres. Pode ser usado para compartilhar o mesmo volume entre vários containeres. Não depende de nenhum container;
+- **docker container run --name *container-name* --volumes-from *container-name-another-volume* -it *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo a partir da imagem *image*. Mapeia um volume que foi criado por outro container *container-name-another-volume*. Esse comando tem como função mapear o mesmo volume para vários containeres, porém ao apagar o container onde foi criado o volume todos os outros perdem acesso ao volume;
 
 ## Networks
 
