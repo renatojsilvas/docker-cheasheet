@@ -37,8 +37,14 @@
 - **docker volume create --name *volume-name*** -> cria um volume de nome *volume-name*;
 - **docker container run --name *container-name* -d --rm -v *volume-name*:*container-volume-folder* -p *external-port*:*internal-port* *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo segundo plano a partir da imagem *image*, apagando-o assim que finalizá-lo. Mapeia as portas externa e interna do container. Mapeia um volume na pasta *container-volume-folder* que pode ser acessado no host através do volume criado;
 - **docker container create --name *container-name* -v /*container-folder* *image*** -> cria um container *container-name* e cria uma pasta no container chamada *container-folder*. Essa pasta pode ser compatilhada entre vários containeres. Pode ser usado para compartilhar o mesmo volume entre vários containeres. Não depende de nenhum container;
-- **docker container run --name *container-name* --volumes-from *container-name-another-volume* -it *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo a partir da imagem *image*. Mapeia um volume que foi criado por outro container *container-name-another-volume*. Esse comando tem como função mapear o mesmo volume para vários containeres, porém ao apagar o container onde foi criado o volume todos os outros perdem acesso ao volume;
+- **docker container run --name *container-name* --volumes-from *container-name-another-volume* -it *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo a partir da imagem *image*. Mapeia um volume que foi criado por outro container *container-name-another-volume*. Esse comando tem como função mapear o mesmo voexitlume para vários containeres, porém ao apagar o container onde foi criado o volume todos os outros perdem acesso ao volume;
 
 ## Networks
+- **docker network create *network-name*** -> cria uma network personalizada de nome *network-name*;
+- **docker network create --driver *driver-name* *network-name*** -> cria uma rede personalizada de nome *network-name* mas não mais no driver padrão bridge e sim no driver *driver-name*
+- **docker container run --name *container-name* -it --network *network-name* *image*** -> cria (create), inicia (start) e executa (exec) um container de *container-name* no modo interativo a partir da imagem *image*. Conecta esse container à rede personalizada *newtork-name*
+- **docker network connect *network-name* *container-name*** -> conecta a rede *network-name* ao container *container-name*
+- **hostname -i** -> em um container alpine, mostra qual o ip do container. Para todo container criado é dado um ip de maneira incremental;
+
 
 ## Docker Compose
