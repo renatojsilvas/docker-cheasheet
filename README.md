@@ -48,3 +48,13 @@
 
 
 ## Docker Compose
+- **docker-compose build** -> compila o arquivo docker-compose.yml, verificando se o mesmo está correto e criando a imagem;
+- **docker-compose up -d** -> cria, inicia e executa o container com base nas especificações do arquivo docker-compose.yml;
+- **docker-compose ps** -> exibe os containeres em execução;
+- **docker-compose logs** -> exibe os logs;
+- **docker-compose start** -> inicia um container;
+- **docker-compose stop** -> para um container;
+- **docker-compose pause** -> pausa um container;
+- **docker-compose unpause** -> desfaz uma pausa;
+- **docker-compose rm** -> remove containeres parados;
+- **docker-compose down** -> para e remove contêineres, redes, volumes e imagens criada pelo comando up; 
