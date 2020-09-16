@@ -1,4 +1,4 @@
-# docker-cheasheet
+# Docker cheatsheet
 
 ## Containers
 - **docker container ls -a** ou **docker container ps -a** -> exibe todos os containers disponíveis na máquina local;
